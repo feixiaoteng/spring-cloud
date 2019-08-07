@@ -1,0 +1,12 @@
+server:
+  port: 24001 #服务端口
+spring:
+  application:
+    name: spring-cloud-config-server #指定服务名
+  cloud:
+    config:
+      server:
+        git: #配置git仓库地址
+          uri: https://github.com/feixiaoteng/spring-cloud-config.git
+          #username: daitengfei
+          #password: 123456
