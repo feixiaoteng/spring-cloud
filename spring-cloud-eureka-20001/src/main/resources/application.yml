@@ -1,0 +1,12 @@
+server:
+  port: 20001
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      #defaultZone:修改为其他Eureka Server 的节点路径
+      defaultZone: http://eureka20002.com:20002/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: eureka20001.com

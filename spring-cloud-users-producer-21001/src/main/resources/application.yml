@@ -1,0 +1,13 @@
+server:
+  port: 21001
+spring:
+  application:
+    name: spring-cloud-users-producer #指定服务名
+eureka:
+  client:
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址,集群情况下用逗号分隔
+      defaultZone: http://eureka20001.com:20001/eureka/,http://eureka20002.com:20002/eureka/
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}

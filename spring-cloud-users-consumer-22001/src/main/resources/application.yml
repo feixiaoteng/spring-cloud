@@ -1,0 +1,20 @@
+server:
+  port: 22001
+spring:
+  application:
+    name: spring-cloud-users-consumer
+eureka:
+  client:
+    register-with-eureka: false #不注册当前服务到Eureka Server
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址,集群情况下用逗号分隔
+      defaultZone: http://eureka20001.com:20001/eureka/,http://eureka20002.com:20002/eureka/
+#开启hystrix
+feign:
+  hystrix:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

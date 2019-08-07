@@ -1,0 +1,13 @@
+server:
+  port: 21002
+spring:
+  application:
+    name: spring-cloud-users-producer
+eureka:
+  client:
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: http://eureka20001.com:20001/eureka/,http://eureka20002.com:20002/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}

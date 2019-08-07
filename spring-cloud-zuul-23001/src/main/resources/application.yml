@@ -1,0 +1,21 @@
+server:
+  port: 23001
+spring:
+  application:
+    name: zull-server
+eureka:
+  client:
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址,集群情况下用逗号分隔
+      defaultZone: http://eureka20001.com:20001/eureka/,http://eureka20002.com:20002/eureka/
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
+zuul:
+  prefix: /fei # 如果配置该项,访问需要加上统一的前缀
+  ignored-services: "*" #忽略http://zuul服务器的ip:port/服务消费者的实例名称/映射请求的请求方式,*忽略全部,可以写具体的服务名称忽略某个
+  routes:
+    users-producer: #item-producer这个名字是任意写的,根据serviceId定位的服务名称确定访问服务器
+      path: /users/** #配置请求URL的请求规则
+      serviceId: spring-cloud-users-producer #服务实例的名称 spring.application.name
+
